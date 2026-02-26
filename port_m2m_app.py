@@ -245,7 +245,7 @@ FUNDS = {
 
 THRESHOLDS = {
     'default': {
-        'threshold_pct': 5.0,
+        'threshold_pct': 1.0,
         'multipliers': {-1.0:10000,-1.5:12000,-2:15000,-2.5:17000,-3.0:20000,-3.5:25000,-4.0:30000},
     },
     'None': {
