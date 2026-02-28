@@ -55,7 +55,7 @@ FUNDS = {
         'Scheme Name': 'Kotak Nifty Next 50',
         'benchmark_ticker': 'NIFTY NEXT 50',
         'Benchmark Name': 'NIFTY NEXT 50',
-        'units': 14271.526,
+        'units': 14762.9,
     },
     '141877': {
         'Scheme Name': 'DSP Nifty 50 Equal Weight',
@@ -67,7 +67,7 @@ FUNDS = {
         'Scheme Name': 'DSP Nifty Top 10 Equal Weight',
         'benchmark_ticker': 'NIFTY TOP 10 EW',
         'Benchmark Name': 'NIFTY TOP 10 EQUAL WEIGHT',
-        'units': 30714.276,
+        'units': 32776.499,
     },
 
 ########## MID & SMALL CAPS ##########
@@ -145,7 +145,7 @@ FUNDS = {
         'Scheme Name': 'Parag Parikh Flexi Cap',
         'benchmark_ticker': 'CUSTMULT01',
         'Benchmark Name': 'Custom Multi-Asset',
-        'units': 3490.444,#3382.352
+        'units': 3652.901,
     },
     '120492': {
         'Scheme Name': 'JM Flexicap',
@@ -199,7 +199,7 @@ FUNDS = {
         'Scheme Name': 'Franklin US Opportunities',
         'benchmark_ticker': 'LIQUIDBEES',
         'Benchmark Name': 'Government Securities',
-        'units': 3959.751,
+        'units': 4071.214,
     },
 
 ###### Multi-Asset ##########
@@ -411,16 +411,30 @@ def build_snapshot():
 def calc_buy_recs(df):
     recs = []
     for _, row in df.iterrows():
-        sname = row["Scheme Name"]
-        chg   = float(row["1D Chg Num"])
-        t     = THRESHOLDS.get(sname, THRESHOLDS["default"])
-        if chg <= -t["threshold_pct"]:
-            step   = float(np.floor(chg * 2) / 2)   # half-step floors for 0.5-step keys
-            avail  = sorted(t["multipliers"].keys())
-            chosen = max([k for k in avail if k <= step], default=min(avail))
-            recs.append({"name":sname,"chg":chg,"threshold":t["threshold_pct"],
-                         "buy_amt":t["multipliers"].get(chosen, 25000)})
+        sname  = row["Scheme Name"]
+        chg    = float(row["1D Chg Num"])
+        t      = THRESHOLDS.get(sname, THRESHOLDS["default"])
+        thr    = -t["threshold_pct"]  # e.g. -1.0 for 1%
+
+        if chg <= thr:
+            avail = sorted(t["multipliers"].keys())  # e.g. [-4.0,-3.5,-3.0,...,-1.0]
+
+            # choose the highest threshold that is still >= chg (less negative)
+            # example: chg = -1.2 -> picks -1.0, chg = -1.6 -> picks -1.5
+            eligible = [k for k in avail if k >= chg and k <= thr]
+            if not eligible:
+                chosen = min(avail)  # fallback to most negative if something odd
+            else:
+                chosen = max(eligible)
+
+            recs.append({
+                "name":      sname,
+                "chg":       chg,
+                "threshold": t["threshold_pct"],
+                "buy_amt":   t["multipliers"].get(chosen, 25000),
+            })
     return recs
+
 
 
 # ── HTML helpers ─────────────────────────────────────────────────────────────
@@ -672,7 +686,7 @@ def build_sunburst(df):
     fig.update_layout(
         margin=dict(t=10,b=10,l=10,r=10),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(family="DM Sans, sans-serif", color="#f0f4f8",size=11),
+        font=dict(family="DM Sans, sans-serif", color="#f0f4f8",size=8),
         height=580,#540
     )
     return fig
@@ -683,7 +697,9 @@ def build_sunburst(df):
 ts = st.session_state.last_updated or "—"
 st.markdown(topbar(ts), unsafe_allow_html=True)
 
-col_btn, _ = st.columns([2, 6])
+# Three columns: left spacer, narrow center (button), right spacer
+left, col_btn, right = st.columns([2, 1, 2])
+
 with col_btn:
     refresh_clicked = st.button("↻  Refresh P&L", use_container_width=True)
 
