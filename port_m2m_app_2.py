@@ -1,9 +1,3 @@
-# app.py
-# Portfolio Monitor · Dark Theme · Streamlit
-
-
-# ---------- Segment mapping by name ----------
-
 segment_mapping_dict = {
 
 'Bandhan Nifty 50 - Regular':'Equity: UltraLarge',
@@ -41,6 +35,48 @@ segment_mapping_dict = {
 'Kotak Nifty Next 50': 'Equity: Largecap',
 'Total':'Total'
 }
+
+scheme_name_map = {
+    "Bandhan Nifty 50 Index Fund-Regular Plan-Growth":"Bandhan Nifty 50 - Regular",
+    "Bandhan Nifty 50 Index Fund-Direct Plan - Growth": "Bandhan Nifty 50",
+    "Kotak Nifty Next 50 Index Fund Direct - Growth":   "Kotak Nifty Next 50",
+    "DSP Nifty 50 Equal Weight Index Fund - Dir - Growth":"DSP Nifty 50 Equal Weight",
+    "DSP Nifty Top 10 Equal Weight Index Fund - Direct - Growth":"DSP Nifty Top 10 Equal Weight",
+
+    "HDFC Mid Cap Fund - Direct Plan - Growth Option":  "HDFC Mid-Cap",
+    "Motilal Oswal Nifty Midcap 150 Index Fund - Direct Plan Growth":"Motilal Oswal Nifty Midcap 150",
+    "HDFC Small Cap Fund - Direct Growth Plan":"HDFC Small Cap",
+    "Motilal Oswal Nifty Smallcap 250 Index Fund - Direct Plan Growth":"Motilal Oswal Nifty Smallcap 250",
+
+    "NIPPON INDIA MULTI CAP FUND - DIRECT GROWTH PLAN GROWTH OPTION":       "Nippon India Multi Cap",
+    "Parag Parikh Flexi Cap Fund - Direct Plan Growth":       "Parag Parikh Flexi Cap",
+    "JM Flexicap Fund - (Direct) - Growth Option":"JM Flexicap",
+
+    "ICICI Prudential Multi-Asset Fund - Direct Plan - Growth": "ICICI Prudential Multi-Asset",
+    "HDFC Balanced Advantage Fund - Direct Plan - Growth Option":      "HDFC Balanced Advantage",
+
+    "Edelweiss Nifty Midcap150 Momentum 50 Index Fund - Direct Plan Growth":"Edelweiss Nifty Midcap150 Momentum 50",
+    "HDFC NIFTY200 Momentum 30 INDEX FUND Direct Growth":"HDFC NIFTY200 Momentum 30",
+    
+    
+    "ICICI Prudential Value Fund - Direct Plan - Growth":"ICICI Prudential Value",
+    "UTI Nifty 500 Value 50 Index Fund - Direct Plan":"UTI Nifty 500 Value 50",
+    "SBI Contra Fund - Direct Plan - Growth":"SBI Contra",
+
+
+    "Kotak Arbitrage Fund - Direct Plan - Growth":"Kotak Arbitrage",
+    "Franklin U.S. Opportunities Equity Active Fund of Funds - Direct Plan - Growth":"Franklin US Opportunities",
+    
+
+    
+    "SBI Gold Fund - Direct Plan - Growth":"SBI Gold",
+    "SBI Silver ETF Fund of Fund - Direct Growth":"SBI Silver",
+    "HDFC Silver ETF Fund of Fund Direct Growth":"HDFC Silver",
+
+
+    # Add / adjust entries to match your TXT exactly
+}
+
 FUNDS = {
    ########### LARGE CAPS #############
 
@@ -48,31 +84,31 @@ FUNDS = {
         'Scheme Name': 'Bandhan Nifty 50 - Regular',
         'benchmark_ticker': 'NIFTY 50',
         'Benchmark Name': 'NIFTY 50',
-        'units': 10095.428,
+        'units': 0,
     },
     '118482': {
         'Scheme Name': 'Bandhan Nifty 50',
         'benchmark_ticker': 'NIFTY 50',
         'Benchmark Name': 'NIFTY 50',
-        'units': 7675.45,
+        'units': 0,
     },
     '148745': {
         'Scheme Name': 'Kotak Nifty Next 50',
         'benchmark_ticker': 'NIFTY NEXT 50',
         'Benchmark Name': 'NIFTY NEXT 50',
-        'units': 14762.9,
+        'units': 0,
     },
     '141877': {
         'Scheme Name': 'DSP Nifty 50 Equal Weight',
         'benchmark_ticker': 'NIFTY50 EQL WGT',
         'Benchmark Name': 'NIFTY50 EQUAL WEIGHT',
-        'units': 11720.387,
+        'units': 0,
     },
     '152814': {
         'Scheme Name': 'DSP Nifty Top 10 Equal Weight',
         'benchmark_ticker': 'NIFTY TOP 10 EW',
         'Benchmark Name': 'NIFTY TOP 10 EQUAL WEIGHT',
-        'units': 32776.499,
+        'units': 0,
     },
 
 ########## MID & SMALL CAPS ##########
@@ -81,25 +117,25 @@ FUNDS = {
         'Scheme Name': 'Motilal Oswal Nifty Midcap 150',
         'benchmark_ticker': 'NIFTY MIDCAP 150',
         'Benchmark Name': 'NIFTY MIDCAP 150',
-        'units': 5040.272,
+        'units': 0,
     },
     '147623': {
         'Scheme Name': 'Motilal Oswal Nifty Smallcap 250',
         'benchmark_ticker': 'NIFTY SMLCAP 250',
         'Benchmark Name': 'NIFTY SMALLCAP 250',
-        'units': 5546.078,
+        'units': 0,
     },
     '118989': {
         'Scheme Name': 'HDFC Mid-Cap',
         'benchmark_ticker': 'NIFTY MIDCAP 150',
         'Benchmark Name': 'NIFTY MIDCAP 150',
-        'units': 1627.281,
+        'units': 0,
     },
     '130503': {
         'Scheme Name': 'HDFC Small Cap',
         'benchmark_ticker': 'NIFTY SMLCAP 250',
         'Benchmark Name': 'NIFTY SMALLCAP 250',
-        'units': 1939.401,
+        'units': 0,
     },
 
 ########### MOMENTUM ###########
@@ -108,13 +144,13 @@ FUNDS = {
         'Scheme Name': 'HDFC NIFTY200 Momentum 30',
         'benchmark_ticker': 'NIFTY200MOMENTM30',
         'Benchmark Name': 'NIFTY200 MOMENTUM 30',
-        'units': 22669.6530842006,#22190.8230842006 + 478.83/
+        'units': 0,#22669.6530842006,#22190.8230842006 + 478.83/
     },
     '150902': {
         'Scheme Name': 'Edelweiss Nifty Midcap150 Momentum 50',
         'benchmark_ticker': 'NIFTYM150MOMNTM50',
         'Benchmark Name': 'NIFTY MIDCAP150 MOMENTUM 50',
-        'units': 5553.464,
+        'units': 0,
     },
 
 ########## VALUE  ##########
@@ -123,19 +159,19 @@ FUNDS = {
         'Scheme Name': 'SBI Contra',
         'benchmark_ticker': 'NIFTY500 VALUE 50',
         'Benchmark Name': 'NIFTY500 VALUE 50',
-        'units': 368.852,
+        'units': 0,
     },
     '120323': {
         'Scheme Name': 'ICICI Prudential Value',
         'benchmark_ticker': 'NIFTY500 VALUE 50',
         'Benchmark Name': 'NIFTY500 VALUE 50',
-        'units': 393.475,
+        'units': 0,
     },
     '151739': {
         'Scheme Name': 'UTI Nifty 500 Value 50',
         'benchmark_ticker': 'NIFTY500 VALUE 50',
         'Benchmark Name': 'NIFTY500 VALUE 50',
-        'units': 9756.788,
+        'units': 0,
     },
 
 ######## FLEXI/MULTI CAP  #######
@@ -144,19 +180,19 @@ FUNDS = {
         'Scheme Name': 'Nippon India Multi Cap',
         'benchmark_ticker': 'NIFTY500 MULTICAP',
         'Benchmark Name': 'NIFTY500 MULTICAP 50:25:25',
-        'units': 815.721,
+        'units': 0,
     },
     '122639': {
         'Scheme Name': 'Parag Parikh Flexi Cap',
         'benchmark_ticker': 'CUSTMULT01',
         'Benchmark Name': 'Custom Multi-Asset',
-        'units': 3652.901,
+        'units': 0,
     },
     '120492': {
         'Scheme Name': 'JM Flexicap',
         'benchmark_ticker': 'NIFTY 500',
         'Benchmark Name': 'NIFTY 500',
-        'units': 1684.449,
+        'units': 0,
     },
 
 ###### GOLD/SILVER ##########
@@ -165,19 +201,19 @@ FUNDS = {
         'Scheme Name': 'SBI Gold',
         'benchmark_ticker': 'SETFGOLD',
         'Benchmark Name': 'Gold',
-        'units': 11924.354,
+        'units': 0,
     },
     '152735': {
         'Scheme Name': 'SBI Silver',
         'benchmark_ticker': 'SBISILVER',
         'Benchmark Name': 'SBI SILVER ETF',
-        'units': 15814.738,
+        'units': 0,
     },
     '150737': {
         'Scheme Name': 'HDFC Silver',
         'benchmark_ticker': 'HDFCSILVER',
         'Benchmark Name': 'HDFC Silver ETF',
-        'units': 3249.967,
+        'units': 0,
     },
 
 ###### ARBITRAGE ##########
@@ -186,17 +222,8 @@ FUNDS = {
         'Scheme Name': 'Kotak Arbitrage',
         'benchmark_ticker': 'GROWWLIQID',
         'Benchmark Name': 'Nifty 1D Rate Index',
-        'units': 15203.98,
+        'units': 0,
     },
-
-###### GILT ##########
-
-    # '119707': {
-    #     'Scheme Name': 'SBI Gilt',
-    #     'benchmark_ticker': 'LTGILTBEES',
-    #     'Benchmark Name': 'NIFTY 8-13 yr G-Sec Index',
-    #     'units': 1513.943,
-    # },
 
 ###### USA ##########
 
@@ -204,7 +231,7 @@ FUNDS = {
         'Scheme Name': 'Franklin US Opportunities',
         'benchmark_ticker': 'LIQUIDBEES',
         'Benchmark Name': 'Government Securities',
-        'units': 4071.214,
+        'units': 0,
     },
 
 ###### Multi-Asset ##########
@@ -213,18 +240,23 @@ FUNDS = {
         'Scheme Name': 'ICICI Prudential Multi-Asset',
         'benchmark_ticker': 'CUSTMULT01',
         'Benchmark Name': 'Custom Multi-Asset',
-        'units': 367.132,
+        'units': 0,
     },
     '118968': {
         'Scheme Name': 'HDFC Balanced Advantage',
         'benchmark_ticker': 'CUSTMULT01',
         'Benchmark Name': 'Custom Multi-Asset',
-        'units': 388.471,
+        'units': 0,
     },
 }
 
 
-
+import json
+import requests, time, numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
+from datetime import datetime
 
 # ── Config & Constants ──────────────────────────────────────────────────────
 
@@ -238,14 +270,48 @@ FUNDS = {
 #     'HDFC Balanced Advantage':        'Equity: Hybrid',
 # }
 
+# # Names in TXT -> names used here
+# scheme_name_map = {
+#     "Bandhan Nifty 50 - Direct Plan":        "Bandhan Nifty 50",
+#     "Kotak Nifty Next 50 – Direct Plan":     "Kotak Nifty Next 50",
+#     "HDFC Mid-Cap Opportunities - Direct":   "HDFC Mid-Cap",
+#     "Nippon India Multi Cap - Direct":       "Nippon India Multi Cap",
+#     "Parag Parikh Flexi Cap - Direct":       "Parag Parikh Flexi Cap",
+#     "ICICI Prudential Multi-Asset - Direct": "ICICI Prudential Multi-Asset",
+#     "HDFC Balanced Advantage - Direct":      "HDFC Balanced Advantage",
+#     # adjust to match your TXT file exactly
+# }
+
+# # FUNDS: units will be overwritten at runtime from TXT
 # FUNDS = {
-#     '118482': {'Scheme Name': 'Bandhan Nifty 50',             'benchmark_ticker': 'NIFTY 50',          'Benchmark Name': 'NIFTY 50',                   'units': 500},
-#     '148745': {'Scheme Name': 'Kotak Nifty Next 50',          'benchmark_ticker': 'NIFTY NEXT 50',     'Benchmark Name': 'NIFTY NEXT 50',              'units': 500},
-#     '118989': {'Scheme Name': 'HDFC Mid-Cap',                 'benchmark_ticker': 'NIFTY MIDCAP 150',  'Benchmark Name': 'NIFTY MIDCAP 150',           'units': 500},
-#     '118650': {'Scheme Name': 'Nippon India Multi Cap',       'benchmark_ticker': 'NIFTY500 MULTICAP', 'Benchmark Name': 'NIFTY500 MULTICAP 50:25:25', 'units': 500},
-#     '122639': {'Scheme Name': 'Parag Parikh Flexi Cap',       'benchmark_ticker': 'CUSTMULT01',        'Benchmark Name': 'Custom Multi-Asset',         'units': 500},
-#     '120334': {'Scheme Name': 'ICICI Prudential Multi-Asset', 'benchmark_ticker': 'CUSTMULT01',        'Benchmark Name': 'Custom Multi-Asset',         'units': 400},
-#     '118968': {'Scheme Name': 'HDFC Balanced Advantage',      'benchmark_ticker': 'CUSTMULT01',        'Benchmark Name': 'Custom Multi-Asset',         'units': 300},
+#     '118482': {'Scheme Name': 'Bandhan Nifty 50',
+#                'benchmark_ticker': 'NIFTY 50',
+#                'Benchmark Name': 'NIFTY 50',
+#                'units': 0},
+#     '148745': {'Scheme Name': 'Kotak Nifty Next 50',
+#                'benchmark_ticker': 'NIFTY NEXT 50',
+#                'Benchmark Name': 'NIFTY NEXT 50',
+#                'units': 0},
+#     '118989': {'Scheme Name': 'HDFC Mid-Cap',
+#                'benchmark_ticker': 'NIFTY MIDCAP 150',
+#                'Benchmark Name': 'NIFTY MIDCAP 150',
+#                'units': 0},
+#     '118650': {'Scheme Name': 'Nippon India Multi Cap',
+#                'benchmark_ticker': 'NIFTY500 MULTICAP',
+#                'Benchmark Name': 'NIFTY500 MULTICAP 50:25:25',
+#                'units': 0},
+#     '122639': {'Scheme Name': 'Parag Parikh Flexi Cap',
+#                'benchmark_ticker': 'CUSTMULT01',
+#                'Benchmark Name': 'Custom Multi-Asset',
+#                'units': 0},
+#     '120334': {'Scheme Name': 'ICICI Prudential Multi-Asset',
+#                'benchmark_ticker': 'CUSTMULT01',
+#                'Benchmark Name': 'Custom Multi-Asset',
+#                'units': 0},
+#     '118968': {'Scheme Name': 'HDFC Balanced Advantage',
+#                'benchmark_ticker': 'CUSTMULT01',
+#                'Benchmark Name': 'Custom Multi-Asset',
+#                'units': 0},
 # }
 
 THRESHOLDS = {
@@ -271,11 +337,8 @@ def _color_for(name, cache={}):
         cache[name] = _PALETTE[len(cache) % len(_PALETTE)]
     return cache[name]
 
-def seg_color(seg):
-    return _color_for(f"seg:{seg}")
-
-def fund_color(fund):
-    return _color_for(f"fund:{fund}")
+def seg_color(seg):   return _color_for(f"seg:{seg}")
+def fund_color(fund): return _color_for(f"fund:{fund}")
 
 C_BG        = "#020617"
 C_SURFACE   = "#0b1220"
@@ -350,7 +413,7 @@ header[data-testid="stHeader"] {{ display: none; }}
   font-size: 14px !important;
   font-weight: 500 !important;
   color: #e5e7eb !important;
-  background: linear-gradient(135deg, {C_BLUE}, #{hex(int(C_BLUE[1:],16) ^ 0x111111)[2:]:s}) !important;
+  background: linear-gradient(135deg, {C_BLUE}, #4f46e5) !important;
   border-radius: 999px !important;
   border: 1px solid rgba(59,130,246,0.3) !important;
   padding: 8px 20px !important;
@@ -402,6 +465,33 @@ HEADERS_NSE = {
 _session = requests.Session()
 _session.headers.update({"User-Agent": "Mozilla/5.0"})
 
+# ── Load units dynamically from TXT ──────────────────────────────────────────
+def load_units_from_txt(path="scheme_balance.txt"):
+    """Load units from TXT and map to FUNDS['Scheme Name']."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            raw_balances = json.load(f)
+    except FileNotFoundError:
+        st.warning(f"Units file not found: {path}. Using zero units.")
+        return FUNDS
+
+    # dashboard name -> scheme codes
+    name_to_codes = {}
+    for code, meta in FUNDS.items():
+        name_to_codes.setdefault(meta["Scheme Name"], []).append(code)
+
+    for txt_name, units in raw_balances.items():
+        dash_name = scheme_name_map.get(txt_name)
+        if not dash_name:
+            continue
+        if dash_name not in name_to_codes:
+            continue
+        for code in name_to_codes[dash_name]:
+            FUNDS[code]["units"] = units
+
+    return FUNDS
+
+
 def get_latest_nav(code, retries=2, delay=0.5):
     for attempt in range(retries):
         try:
@@ -415,6 +505,9 @@ def get_latest_nav(code, retries=2, delay=0.5):
 
 @st.cache_data(show_spinner=False, ttl=300)
 def build_snapshot():
+    # Refresh units at start
+    load_units_from_txt("scheme_balance.txt")
+
     r_idx = requests.get(URL_JSON, headers=HEADERS_NSE, timeout=5)
     r_idx.raise_for_status()
     raw = r_idx.json()
@@ -462,18 +555,21 @@ def build_snapshot():
     port["iNAV"]       = port["Last NAV"] * (1 + port["PctChg"] / 100.0)
     port["MTM Value"]  = port["iNAV"] * port["units"]
     port["1D P&L"]     = port["MTM Value"] - port["Last Value"]
-    port["1D Chg Num"] = port["1D P&L"] / port["Last Value"] * 100.0
+    port["1D Chg Num"] = np.where(port["Last Value"] != 0,
+                                  port["1D P&L"] / port["Last Value"] * 100.0,
+                                  0.0)
 
     df_disp = port[[
         "Scheme Code", "Scheme Name", "Benchmark Name",
         "Last NAV", "iNAV", "Last Value", "MTM Value", "1D P&L", "1D Chg Num",
     ]].reset_index(drop=True)
 
+    total_last = port["Last Value"].sum()
     totals = {
-        "pv":  float(port["Last Value"].sum()),
+        "pv":  float(total_last),
         "mtm": float(port["MTM Value"].sum()),
         "pnl": float(port["1D P&L"].sum()),
-        "ret": float(port["1D P&L"].sum() / port["Last Value"].sum() * 100),
+        "ret": float(port["1D P&L"].sum() / total_last * 100) if total_last != 0 else 0.0,
     }
     return df_disp, totals
 
@@ -483,16 +579,13 @@ def calc_buy_recs(df):
         sname  = row["Scheme Name"]
         chg    = float(row["1D Chg Num"])
         t      = THRESHOLDS.get(sname, THRESHOLDS["default"])
-        thr    = -t["threshold_pct"]  # e.g. -1.0 for 1%
+        thr    = -t["threshold_pct"]
 
         if chg <= thr:
-            avail = sorted(t["multipliers"].keys())  # e.g. [-4.0,-3.5,-3.0,...,-1.0]
-
-            # choose the highest threshold that is still >= chg (less negative)
-            # example: chg = -1.2 -> picks -1.0, chg = -1.6 -> picks -1.5
+            avail = sorted(t["multipliers"].keys())
             eligible = [k for k in avail if k >= chg and k <= thr]
             if not eligible:
-                chosen = min(avail)  # fallback to most negative if something odd
+                chosen = min(avail)
             else:
                 chosen = max(eligible)
 
@@ -505,7 +598,7 @@ def calc_buy_recs(df):
     return recs
 
 
-
+# ── UI helpers (unchanged) ──────────────────────────────────────────────────
 def seg_pill(seg):
     c = seg_color(seg)
     r, g, b = int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)
@@ -518,8 +611,7 @@ def seg_pill(seg):
         f"{seg}</span>"
     )
 
-def sign(v):
-    return "+" if v > 0 else ""
+def sign(v): return "+" if v > 0 else ""
 
 def topbar(ts):
     live_badge = (
@@ -546,26 +638,21 @@ def topbar(ts):
         f"<div style=\"max-width:1300px;margin:0 auto;"
         f"display:flex;align-items:center;justify-content:space-between;"
         f"height:64px;padding:10px 8px 8px;\">"
-
-        # LEFT: icon + title / subtitle (subtitle starts roughly under icon)
         f"<div style=\"display:flex;align-items:flex-start;gap:10px;\">"
         f"<div style=\"width:30px;height:30px;border-radius:10px;"
         f"background:radial-gradient(circle at 10% 0%,rgba(56,189,248,0.9),rgba(59,130,246,0.15));"
         f"display:flex;align-items:center;justify-content:center;"
         f"font-size:18px;box-shadow:0 8px 30px rgba(15,23,42,0.8);"
-        f"transform: translateY(-4px);\">&#128202;</div>"
+        f"transform: translateY(-4px);\">📊</div>"
         f"<div style=\"display:flex;flex-direction:column;gap:2px;\">"
         f"<div style=\"font-size:20px;font-weight:600;letter-spacing:-0.02em;color:{C_TEXT};\">"
         f"Portfolio Monitor</div>"
-        # small negative margin to pull the Live/subtitle left under the icon
-        f"<div style=\"display:flex;align-items:center;gap:8px;margin-left:-40  px;\">"
+        f"<div style=\"display:flex;align-items:center;gap:8px;margin-left:-40px;\">"
         f"{live_badge}"
         f"<span style=\"font-size:11px;color:{C_DIM};\">Daily NAV and MTM overview</span>"
         f"</div>"
         f"</div>"
         f"</div>"
-
-        # RIGHT: last-updated pill (top-right, smaller font)
         f"<div style=\"display:flex;align-items:flex-start;\">"
         f"<div style=\"display:inline-flex;align-items:center;gap:6px;"
         f"padding:3px 12px;border-radius:999px;background:rgba(15,23,42,0.9);"
@@ -575,15 +662,10 @@ def topbar(ts):
         f"<span style=\"opacity:0.85;font-size:11px;\">Last updated</span>"
         f"<span style=\"color:{C_TEXT2};font-size:11px;\">{ts}</span>"
         f"</div>"
-
         f"</div>"
-
         f"</div>"
         f"</div>"
     )
-
-
-
 
 def section_hdr(title, badge=""):
     b = (
@@ -629,7 +711,7 @@ def signal_ok():
         f"border:1px solid rgba(34,197,94,0.45);border-radius:14px;"
         f"padding:16px 18px;display:flex;align-items:flex-start;gap:10px;"
         f"color:{C_GREEN};font-size:14px;font-weight:500;\">"
-        f"<span style=\"font-size:20px;\">&#9989;</span>"
+        f"<span style=\"font-size:20px;\">✅</span>"
         f"<div>"
         f"<div>No buy signals today</div>"
         f"<div style=\"margin-top:2px;font-size:13px;font-weight:400;color:{C_TEXT2};\">"
@@ -647,7 +729,7 @@ def splash():
         f"<div style=\"width:56px;height:56px;border-radius:18px;"
         f"margin:0 auto 16px;display:flex;align-items:center;justify-content:center;"
         f"background:rgba(15,23,42,0.85);border:1px solid rgba(148,163,184,0.45);"
-        f"box-shadow:0 18px 40px rgba(15,23,42,0.9);font-size:28px;\">&#128200;</div>"
+        f"box-shadow:0 18px 40px rgba(15,23,42,0.9);font-size:28px;\">📈</div>"
         f"<div style=\"font-size:18px;font-weight:600;color:{C_TEXT};margin-bottom:6px;\">"
         f"No data yet</div>"
         f"<div style=\"font-size:14px;color:{C_DIM};margin-bottom:12px;\">"
@@ -668,7 +750,6 @@ def tbl_start(cols):
         for h, a in cols
     )
     return (
-        # outer scroll wrapper
         f"<div style=\"width:100%;overflow-x:auto;\">"
         f"<div style=\"background:{C_SURFACE2};border:1px solid {C_BORDER};"
         f"border-radius:14px;overflow:hidden;animation:fadeUp 0.35s ease 0.05s both;"
@@ -678,10 +759,8 @@ def tbl_start(cols):
         f"<thead><tr>{ths}</tr></thead><tbody>"
     )
 
-
 def tbl_end():
     return "</tbody></table></div></div>"
-
 
 def td(val, align="right", color=None, bold=False):
     col   = f"color:{color};" if color else f"color:{C_TEXT2};"
@@ -702,7 +781,7 @@ def buy_table(recs):
             + td(r["name"], "left", C_TEXT, bold=True)
             + td(f"{sign(r['chg'])}{r['chg']:.2f}%", color=cc)
             + td(f"{r['threshold']}%", color=C_MUTED)
-            + td(f"&#8377;{r['buy_amt']:,.0f}", color=C_GOLD)
+            + td(f"₹{r['buy_amt']:,.0f}", color=C_GOLD)
             + "</tr>"
         )
     return tbl_start(cols) + rows + tbl_end()
@@ -727,10 +806,10 @@ def scheme_table(df_in, total_mtm):
             + td(seg_pill(row["Segment"]), "left")
             + td(f"{row['Last NAV']:.2f}", color=C_TEXT2)
             + td(f"{row['iNAV']:.2f}", color=C_TEXT2)
-            + td(f"&#8377;{row['Last Value']:,.0f}", color=C_TEXT2)
-            + td(f"&#8377;{row['MTM Value']:,.0f}", color=C_TEXT2)
+            + td(f"₹{row['Last Value']:,.0f}", color=C_TEXT2)
+            + td(f"₹{row['MTM Value']:,.0f}", color=C_TEXT2)
             + td(f"{wt:.1f}%", color=C_MUTED)
-            + td(f"{sign(pnl)}&#8377;{abs(pnl):,.0f}", color=pc)
+            + td(f"{sign(pnl)}₹{abs(pnl):,.0f}", color=pc)
             + td(f"{sign(chg)}{chg:.2f}%", color=cc)
             + "</tr>"
         )
@@ -752,7 +831,7 @@ def seg_card(seg, mtm, chg, wt):
         f"<span style=\"width:9px;height:9px;border-radius:999px;background:{col};\"></span>"
         f"</div>"
         f"<div style=\"margin-top:8px;font-family:'DM Mono',monospace;font-size:15px;"
-        f"color:{C_TEXT};\">&#8377;{mtm:,.0f}</div>"
+        f"color:{C_TEXT};\">₹{mtm:,.0f}</div>"
         f"<div style=\"display:flex;align-items:center;gap:10px;margin-top:4px;"
         f"font-family:'DM Mono',monospace;font-size:12px;\">"
         f"<span style=\"color:{chg_col};\">{s}{chg:.2f}%</span>"
@@ -767,7 +846,6 @@ def _with_alpha(hex_color, alpha=0.85):
     b = int(hex_color[5:7], 16)
     return f"rgba({r},{g},{b},{alpha})"
 
-
 def build_treemap(df):
     seg_agg = (
         df.groupby("Segment")
@@ -775,7 +853,7 @@ def build_treemap(df):
           .reset_index()
     )
     seg_agg["chg"] = (seg_agg["1D P&L"] / seg_agg["Last Value"] * 100).round(2)
-    total_mtm       = seg_agg["MTM Value"].sum()
+    total_mtm      = seg_agg["MTM Value"].sum()
     seg_agg["wt"]  = (seg_agg["MTM Value"] / total_mtm * 100).round(1)
 
     ids, labels, parents, values, customdata, colors = [], [], [], [], [], []
@@ -784,7 +862,6 @@ def build_treemap(df):
     t_lv  = float(seg_agg["Last Value"].sum())
     t_ret = t_pnl / t_lv * 100 if t_lv else 0
 
-    # root node (portfolio)
     ids.append("__root__")
     labels.append("Portfolio")
     parents.append("")
@@ -792,7 +869,6 @@ def build_treemap(df):
     colors.append("rgba(2,6,23,0.9)")
     customdata.append((float(total_mtm), t_pnl, t_ret, 100.0))
 
-    # segment level
     for _, sr in seg_agg.iterrows():
         seg = sr["Segment"]
         short_label = seg.replace("Equity: ", "")
@@ -806,7 +882,6 @@ def build_treemap(df):
              float(sr["chg"]), float(sr["wt"]))
         )
 
-    # fund level – each fund gets its own (slightly transparent) color
     fund_tot = float(df["MTM Value"].sum())
     for _, row in df.iterrows():
         seg  = row["Segment"]
@@ -854,11 +929,7 @@ def build_treemap(df):
         ),
     ))
 
-    # global transparency for a more modern look
-    fig.update_traces(
-        opacity=0.8,
-        selector=dict(type="treemap"),
-    )
+    fig.update_traces(opacity=0.8, selector=dict(type="treemap"))
 
     fig.update_layout(
         margin=dict(t=20, b=8, l=8, r=8),
@@ -892,15 +963,13 @@ def build_treemap(df):
     return fig
 
 
+# ── RENDER ───────────────────────────────────────────────────────────────────
 ts = st.session_state.last_updated or "—"
 st.markdown(topbar(ts), unsafe_allow_html=True)
 
-# Three columns: left spacer, narrow center (button), right spacer
 left, col_btn, right = st.columns([2, 1, 2])
-
 with col_btn:
     refresh_clicked = st.button("↻  Refresh P&L", use_container_width=True)
-
 
 if refresh_clicked:
     with st.spinner("Fetching NAVs and benchmarks…"):
@@ -914,7 +983,6 @@ if refresh_clicked:
 st.markdown(sep(), unsafe_allow_html=True)
 
 if st.session_state.run_mtm and st.session_state.df_disp is not None:
-
     df   = st.session_state.df_disp.copy()
     tots = st.session_state.totals
     df["Segment"] = df["Scheme Name"].map(segment_mapping_dict).fillna("Other")
@@ -927,12 +995,12 @@ if st.session_state.run_mtm and st.session_state.df_disp is not None:
     st.markdown(section_hdr("Portfolio overview", "Live snapshot"), unsafe_allow_html=True)
     k1, k2, k3, k4 = st.columns(4)
     with k1:
-        st.markdown(kpi_card("Portfolio value", f"&#8377;{pv:,.0f}", C_BLUE, C_TEXT), unsafe_allow_html=True)
+        st.markdown(kpi_card("Portfolio value", f"₹{pv:,.0f}", C_BLUE, C_TEXT), unsafe_allow_html=True)
     with k2:
-        st.markdown(kpi_card("MTM value", f"&#8377;{mtm:,.0f}", C_PURPLE, C_TEXT), unsafe_allow_html=True)
+        st.markdown(kpi_card("MTM value", f"₹{mtm:,.0f}", C_PURPLE, C_TEXT), unsafe_allow_html=True)
     with k3:
         pc = C_GREEN if pnl >= 0 else C_RED
-        st.markdown(kpi_card("1D P&amp;L", f"&#8377;{pnl:,.0f}", pc, pc), unsafe_allow_html=True)
+        st.markdown(kpi_card("1D P&amp;L", f"₹{pnl:,.0f}", pc, pc), unsafe_allow_html=True)
     with k4:
         rc = C_GREEN if ret >= 0 else C_RED
         st.markdown(kpi_card("1D change", f"{ret:.2f}%", rc, rc), unsafe_allow_html=True)
@@ -948,7 +1016,6 @@ if st.session_state.run_mtm and st.session_state.df_disp is not None:
 
     st.markdown(sep(), unsafe_allow_html=True)
 
-        # Exhibit 2 with sort controls
     st.markdown(
         section_hdr("Exhibit 2 · Scheme-wise market value and P&L", "Sortable table"),
         unsafe_allow_html=True,
@@ -957,17 +1024,13 @@ if st.session_state.run_mtm and st.session_state.df_disp is not None:
     sort_col_map = {
         "Scheme": "Scheme Name",
         "Segment": "Segment",
-        # "Last NAV": "Last NAV",
-        # "iNAV": "iNAV",
         "Last value": "Last Value",
         "MTM value": "MTM Value",
-        "Weight %": "MTM Value",  # sort by MTM, weight is derived
+        "Weight %": "MTM Value",
         "1D P&L": "1D P&L",
         "1D change %": "1D Chg Num",
-        
     }
 
-    # single row: dropdown + radio
     c_sort, c_order, _ = st.columns([2.2, 1.8, 3])
 
     with c_sort:
@@ -997,8 +1060,6 @@ if st.session_state.run_mtm and st.session_state.df_disp is not None:
     )
 
     st.markdown(scheme_table(df_scheme, mtm), unsafe_allow_html=True)
-
-
 
     st.markdown(sep(), unsafe_allow_html=True)
 
